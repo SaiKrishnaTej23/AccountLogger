@@ -1,0 +1,12 @@
+.acc-page-header{
+  min-height: 60px;
+  border-bottom: 1px solid whitesmoke;
+}
+.page-header-inner{
+  padding: 20px;
+}
+
+.acc-main-content{
+  font-size: 14px;
+  margin-top: 40px;
+}

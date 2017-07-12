@@ -1,0 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css');
+.ui.inverted.segment {
+    background-color: #114A65;
+}

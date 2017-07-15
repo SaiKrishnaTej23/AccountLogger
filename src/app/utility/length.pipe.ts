@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class TextSlicePipe implements PipeTransform {
-    constructor(){}
+    constructor() {}
     transform(value: string, args: any[]): any {
 
-      return  value = value.substring(0,15)+'...';
+      return  value = value.substring(0, 15) + '...';
     }
 }

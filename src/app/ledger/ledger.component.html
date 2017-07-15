@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name </th>
+        <th>Desc</th>
+        <th> Action </th>
+      </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let item of Ledgers">
+        <td>
+          {{item.ID}}
+        </td>
+        <td>
+          {{item.LAccount}}
+        </td>
+        <td>
+          {{item.LADescription}}
+        </td>
+        <td>
+          -NA-
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

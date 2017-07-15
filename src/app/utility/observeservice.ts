@@ -8,17 +8,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ObserveService {
 
-  constructor(private action:ActionService) { }
+  constructor(private action: ActionService) { }
 
   public extractData(res: Response): any {
-    let body = res.json();
-    //this.action.LogAction(body);
+    const body = res.json();
     return body.data || {};
   }
 
   public extractBody(res: Response): any {
-    let body = res.json();
-    //this.action.LogAction(body);
+    const body = res.json();
     return body || {};
   }
 

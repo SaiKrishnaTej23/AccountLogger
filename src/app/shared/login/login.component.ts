@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChildren } from '@angular/core';
-import { UserService } from '../utility/user.service';
+import { UserService } from '../../utility/user.service';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
-import { ActionService } from '../utility/action.service';
-import { EventBusService } from '../utility/eventbus.service';
-import { Constants } from '../utility/constants';
-import { HttpClient } from '../shared/customhttp.service';
+import { ActionService } from '../../utility/action.service';
+import { EventBusService } from '../../utility/eventbus.service';
+import { Constants } from '../../utility/constants';
+import { HttpClient } from '../../shared/customhttp.service';
 
 @Component({
     selector: 'app-login',
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   @ViewChildren(LoginComponent) el;
     email: string;
     password: string;
+    isLoading: boolean;
 
     constructor(
     private user: UserService,
@@ -29,18 +30,18 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         console.log(this.el );
+        this.isLoading = false;
     }
 
     login() {
+      this.isLoading = true;
         this.user.login(this.email, this.password).subscribe((result) => {
       if (result) {
-          this.router.navigateByUrl('/accounts');
-          // this.eventbus.dispatch(new Event(Constants.LoggedInEvent));
-          // this.notify.alert('Login Succesfull !', ' Happy browsing ...');
-          this.user.getValues().subscribe((ree) => {console.log(ree) ; });
+        this.isLoading = false;
+          this.router.navigateByUrl('/');
+           this.eventbus.dispatch(new Event(Constants.LoggedInEvent));
       }  else {
-          // this.action.LogAction('Login failed', 1);
-          this.router.navigateByUrl('/accounts');
+
       }
     });
     }

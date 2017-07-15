@@ -9,22 +9,20 @@ import { User } from '../shared/entities/users';
 @Injectable()
 export class UtilityService {
 
-    constructor(private http:Http, private observe:ObserveService) { }
+    constructor(private http: Http, private observe: ObserveService) { }
 
-    ApiDomain(): Observable<string>{
+    ApiDomain(): Observable<string> {
         return this.http.get('url')
             .map(
                 (x: Response) => this.observe.extractData(x),
-            (y : any) => this.observe.handleError(y))
+            (y: any) => this.observe.handleError(y))
             ;
     }
 
-    Users() : Observable<User[]>{
+    Users(): Observable<User[]>{
        return this.http.get('http://localhost:8080/api/users')
             .map((x: Response) => this.observe.extractData(x),
-            (y : any) => this.observe.handleError(y))
-            ;
+            (y: any) => this.observe.handleError(y));
     }
-
 }
 

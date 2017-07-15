@@ -1,0 +1,57 @@
+<div class="acc-page-header container">
+  <div class="page-header-inner">
+    <span class="pull-left">Date: 7/11/2017</span>
+    <span class="pull-right">Current Balance : 50000</span>
+  </div>
+</div>
+<div class="acc-main-content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-6">
+        <!-- Select Basic -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label" for="ACC">Account Head</label>
+          <div class="col-8">
+            <select id="ACC" name="ACC" class="form-control">
+             <option *ngFor="let item of Ledgers"      [value]="item.ID">{{item.LAccount}}</option>
+             </select>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-4 col-form-label" for="amountpaid">Amount Paid</label>
+          <div class="col-8">
+            <input id="amountpaid" name="amountpaid" type="text" placeholder="Dont care" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-4 col-form-label" for="towards">Towards</label>
+          <div class="col-8">
+            <input id="towards" name="towards" type="text" placeholder="Towards" class="form-control input-md" required="">
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-4 col-form-label" for="amount">Amount</label>
+          <div class="col-8">
+            <input id="amount" name="amount" type="text" placeholder="Amount" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label" for="tobasic">To :</label>
+          <div class="col-8">
+            <select id="tobasic" name="tobasic" class="form-control">
+              <option value="1">Option one</option>
+              <option value="2">Option two</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

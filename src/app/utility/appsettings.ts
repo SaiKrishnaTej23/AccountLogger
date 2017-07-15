@@ -2,7 +2,7 @@
 ///import { UtilityService } from './utilityservice';
 
 export class AppSettings {
-    public ApiDomain = 'http://localhost:3000/api/';
+    public ApiDomain = 'http://api.nmbipl.com/api/';
 
     public AppEnvironment = 'DEV';
 
@@ -10,8 +10,7 @@ export class AppSettings {
 
     public DataApiDomain = 'http://localhost:8080/api';
 
-    public TokenUrl = 'http://10.26.44.131/WebAPIOAuth/token';
-
+    public TokenUrl = 'http://api.nmbipl.com/token';
 
     constructor() {
 

@@ -5,17 +5,15 @@ export class ActionService {
 
     constructor(private notify: NotificationsService) { }
 
-    public LogAction (message: any,type?:number){
-        var html1 = "<div class='container'><p>";
-        var html2 = "</p></div>";
+    public LogAction (message: any, type?: number) {
+        const html1 = '<div class="container"><p>';
+        const html2 = '</p></div>';
         console.log(message);
-  
         switch (type) {
-            case 1: this.notify.html(html1+message+html2 ,"success");
+            case 1: this.notify.html(html1 + message + html2 , 'success');
                 break;
-        
-            default:this.notify.html(html1+message+html2 ,"alert");
+            default: this.notify.html(html1 + message + html2 , 'alert');
                 break;
         }
-    }    
+    }
 }

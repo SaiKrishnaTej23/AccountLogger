@@ -2,70 +2,62 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { User } from '../shared/entities/users';
-// import localStorage from 'localStorage';
+import { Roles } from '../shared/entities/roles';
 import { AppSettings } from '../utility/appsettings';
+import { Constants } from './constants';
 
 @Injectable()
 export class UserService {
- private loggedIn = false;
-    base_address: string = this.appsettings.DataApiDomain;
+
+  private loggedIn: boolean;
+
+  base_address: string = this.appsettings.DataApiDomain;
 
     constructor(private http: Http, private appsettings: AppSettings) {
-        this.loggedIn = !!localStorage.getItem('access_token');
+        this.loggedIn = !!localStorage.getItem(Constants.AccessToken);
     }
 
     login(username, password) {
-      if (this.loggedIn === true)    {
         const headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        // headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
-        const credentials = 'UserName=' + username + '&Password=' + password + '&grant_type=password';
+        headers.append('Content-Type', Constants.ContentType);
+        headers.append('Access-Control-Expose-Headers', 'Access-Control-Allow-Origin');
+        headers.append('Access-Control-Allow-Origin', '*');
+
+        const credentials = `UserName=${username}&Password=${password}&grant_type=${Constants.GrantType}`;
         return this.http.post(this.appsettings.TokenUrl, credentials , { headers })
             .map(res => res.json())
             .map((res) => {
-              console.log(res);
                 if (res.access_token) {
-                    localStorage.setItem('access_token', res.access_token);
+                    localStorage.setItem(Constants.AccessToken, res.access_token);
                     localStorage.setItem('userName', res.userName);
-                    console.log(localStorage.getItem('access_token'));
+                    console.log(localStorage.getItem(Constants.AccessToken));
                     this.loggedIn = true;
+                    return true;
                 }
             });
-      }
     }
 
     logout() {
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem(Constants.AccessToken);
         this.loggedIn = false;
     }
 
-    isLoggedIn() {
+    isLoggedIn(): boolean {
         return this.loggedIn;
     }
 
-    userDetails() {
-     const userId =  localStorage.getItem('userName');
-
-      return this.http.get(this.base_address + '/users/' + userId.toString())
-       .map(res => res.json());
+    userDetails () {
+      return  { isLogged : this.loggedIn, userName: localStorage.getItem('userName')  };
     }
 
     getAccessToken() {
-      return localStorage.getItem('access_token');
+      return localStorage.getItem(Constants.AccessToken);
     }
-    getValues() {
-      const headers = new Headers();
-         headers.append('Authorization', 'bearer ' + localStorage.getItem('access_token'));
-     return  this.http.get('http://10.26.44.131/WebAPIOAuth/api/values', { headers})
-     .map(res => res.json())
-     .map((res) => {
-              console.log(res);
-            });
-    }
+
     register(User: User) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:4200')
+        headers.append('Access-Control-Allow-Origin', '*')
 
         return this.http.post(this.base_address + '/register', JSON.stringify({ User }), { headers })
             .map(res => res.json())
@@ -74,8 +66,8 @@ export class UserService {
             });
     }
 
-    users() {
-        return this.http.get(this.base_address + '/users/')
-       .map(res => res.json());
+    getUserRoles(): Array<Roles> {
+      return new Array<Roles>();
     }
 }
+

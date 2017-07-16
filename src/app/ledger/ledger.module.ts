@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LedgerRoutingModule, routedComponents } from './ledger.route';
 import { LedgerService } from './ledger.service';
 import { LedgerCategoryService } from './ledger-category/ledger-category.service';
+import { LedgerCategoryChangeComponent } from './ledger-category/ledger-category-change/ledger-category-change.component';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { LedgerCategoryService } from './ledger-category/ledger-category.service
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [routedComponents],
+  declarations: [routedComponents, LedgerCategoryChangeComponent],
   providers: [LedgerService, LedgerCategoryService]
 })
 export class LedgerModule { }

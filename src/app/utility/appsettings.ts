@@ -12,6 +12,12 @@ export class AppSettings {
 
     public TokenUrl = 'http://api.nmbipl.com/token';
 
+    public AccessToken = 'access_token';
+
+    public ContentType = 'application/x-www-form-urlencoded';
+
+    public GrantType = 'password';
+
     constructor() {
 
     }

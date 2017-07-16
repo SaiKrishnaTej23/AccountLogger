@@ -9,7 +9,11 @@ import 'rxjs/add/operator/catch';
 export class PettyCashLedgerService {
   constructor(private http: HttpClient) { }
 
-  getLedgers(): Observable<Response> {
+getLedgers(): Observable<Response> {
     return this.http.get('ledger');
+ }
+
+ getPettyCashLedgers(): Observable<Response> {
+   return this.http.get('pcledger');
  }
 }

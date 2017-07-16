@@ -22,10 +22,12 @@ export class HttpClient {
     }
 
     get(url: string) {
+        this.Token = this.userservice.getAccessToken();
         return this.http.get(this.ApiUrl + url, this.options);
     }
 
     getByParams(url: string, params: URLSearchParams) {
+       this.Token = this.userservice.getAccessToken();
       const url_params = new URLSearchParams();
       url_params.appendAll(params);
       this.options.params = url_params;
@@ -33,13 +35,16 @@ export class HttpClient {
     }
 
     post(url: string, body: any) {
+       this.Token = this.userservice.getAccessToken();
         return this.http.post(this.ApiUrl + url, body, this.options);
     }
     update(url: string, body: any) {
+       this.Token = this.userservice.getAccessToken();
          return this.http.put(this.ApiUrl + url, body, this.options);
     }
 
     delete(url: string, body: any) {
+       this.Token = this.userservice.getAccessToken();
          return this.http.post(this.ApiUrl + url, body, this.options);
     }
 }

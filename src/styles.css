@@ -4,6 +4,14 @@ body {
   text-align: center;
 }
 
+.table th,td{
+  text-align: left;
+}
+
+.hand-cursor{
+  cursor: pointer;
+}
+
 .card {
   background: #fff;
   border-radius: 2px;

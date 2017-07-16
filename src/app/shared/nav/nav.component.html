@@ -30,7 +30,7 @@
         <a class="nav-link" *ngIf="isLoggedIn">{{userName}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="LogOut()" *ngIf="isLoggedIn">Logout</a>
+        <a class="nav-link" (click)="LogOut()" *ngIf="isLoggedIn">Logout</a>
       </li>
     </ul>
     </div>
